@@ -106,7 +106,9 @@ const checkNew = async (works) => {
         const query = 'UPDATE mozart SET listened_to = true, listened_at = $1 WHERE id = $2';
         const res = await client.query(query, [new Date(), w.id]);
         const percentTotalListened = await getPercentTotalListned(client);
-        const status = `@quincelikefruit just listened to K. ${w.id}: ${w.title}. She has listened to ${percentTotalListened}% of Mozart's total works.`;
+        const words = ['Hark!', 'Rejoyce!', 'Alleluia!', 'Nice!'];
+        const word = words[Math.floor(Math.random() * arr.length)];
+        const status = `${word} @quincelikefruit just listened to K. ${w.id}: ${w.title}. She has listened to ${percentTotalListened}% of Mozart's total works.`;
         const twitterRes = await twitter.post('statuses/update', { status })
         console.log(`success! tweet string: ${twitterRes.text}`);
         return 1;
