@@ -25,3 +25,5 @@ Tweeting is done using the `twitter` library and the twitter API.
 The whole function runs once per minute using the `setInterval` function. Every time it runs, it also checks the API tokens from Spotify and refreshes them. If there aren't any auth tokens in the database, the app starts a `restify` http server that recieves a callback response from the Spotify authorization flow. 
 ## Expansion
 I would like to also keep track of the recordings I listen to. While keeping track of the total number of works that I've listened to is fun, I usually listen to the same few works over and over. Keeping track of my favorite recordings and new ones that I discover could be a good way to make this project live longer. I think it's fun to have a finite end on the project though—I'm trying to finish by May 2020 (when I finish my undergraduate degree). 
+
+This could also be done with any other composer who has a similar catalog number system, like Bach's [Bach-Werke-Verzeichnis](https://en.wikipedia.org/wiki/Bach-Werke-Verzeichnis) or Haydn's [Hoboken catalog](https://en.wikipedia.org/wiki/Hoboken_catalogue).
