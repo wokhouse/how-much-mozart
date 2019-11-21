@@ -4,7 +4,6 @@ const Spotify = require('spotify-web-api-node');
 const { Client } = require('pg');
 const restify = require('restify');
 const Twitter = require('twitter');
-const terminalLink = require('terminal-link');
 const kochel = require('./kochel.json');
 
 const { clientId, clientSecret, redirectUri } = process.env;
@@ -90,7 +89,7 @@ const getPercentTotalListned = async (client) => {
 
 const checkNew = async (works) => {
   // if no new works, stop execution
-  if (!works.map) return true;
+  if (works === true) return true;
   // search db for each catalogue number
   const [err, matchingWorks] = await to(Promise.all(
     works.map(async (w) => {
@@ -158,6 +157,7 @@ const auth = async (code) => {
   // Set the access token on the API object to use it in later calls
   api.setAccessToken(access_token);
   api.setRefreshToken(refresh_token);
+  loop();
 };
 
 const refresh = async () => {
@@ -196,9 +196,7 @@ const loop = async () => {
       const scopes = ['user-read-recently-played'];
       const state = 'testing';
       const authURL = api.createAuthorizeURL(scopes, state);
-      // use terminalLink to make a clickable link log to the console
-      const authLink = terminalLink(`auth needed!`, authURL);
-      console.log(authLink);
+      console.log(`auth needed! ${authURL}`);
       serverListening = true;
     });
   } else if (serverListening) return false;
