@@ -90,7 +90,7 @@ const getPercentTotalListned = async (client) => {
 
 const checkNew = async (works) => {
   // if no new works, stop execution
-  if (!works) return true;
+  if (!works.map) return true;
   // search db for each catalogue number
   const [err, matchingWorks] = await to(Promise.all(
     works.map(async (w) => {
