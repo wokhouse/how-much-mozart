@@ -80,7 +80,7 @@ const getRecentMozart = async () => {
 
 const getPercentTotalListned = async (client) => {
   // calculate % of total works that I've listened to
-  const query = 'SELECT ROUND(100 * count(CASE WHEN listened_to THEN 1 END) / count(*), 1) AS percent FROM mozart';
+  const query = 'SELECT ROUND(cast(count(CASE WHEN listened_to THEN 1 END) as decimal) / cast(count(*) as decimal) * 100, 1) AS percent FROM mozart';
   const [err, res] = await to(client.query(query));
   if (err) return console.error(err);
   const percentTotalListened = res.rows[0].percent;
