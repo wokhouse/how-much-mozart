@@ -17,7 +17,7 @@ Using the K6 numbers, I check a PostgreSQL database of Mozart works. I decided t
 
 I also use an SQL query to calculate the percentage of works that have `TRUE` as the `listened_to` value. This divides the works that I've listened to by the total number of rows. Here is the SQL query that calculates the percentage of total Mozart works that I've listened to:
   ```sql
-  SELECT ROUND(100 * count(CASE WHEN listened_to THEN 1 END) / count(*), 0) AS percent FROM mozart;
+  SELECT ROUND(cast(count(CASE WHEN listened_to THEN 1 END) as decimal) / cast(count(*) as decimal) * 100, 1) AS percent FROM mozart;
   ```
 Tweeting is done using the `twitter` library and the twitter API. 
 
