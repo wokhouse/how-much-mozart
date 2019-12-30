@@ -107,7 +107,7 @@ const checkNew = async (works) => {
         const query = 'UPDATE mozart SET listened_to = true, listened_at = $1 WHERE id = $2';
         const res = await client.query(query, [new Date(), w.id]);
         const percentTotalListened = await getPercentTotalListned(client);
-        const words = ['Hark!', 'Rejoyce!', 'Alleluia!', 'Nice!', 'Pretty swish!', 'Swagalicious!', 'Radical!', 'Wow-wee!', 'Good morning! Let\'s begin—', 'YOLO!', 'So...'];
+        const words = ['Hark!', 'Rejoyce!', 'Alleluia!', 'Nice!', 'Pretty swish!', 'Terrific!', 'Absolutely!', 'So fetch!', 'Radical!', 'Wow-wee!', 'Good morning! Let\'s begin—', 'YOLO!', 'So...'];
         const word = words[Math.floor(Math.random() * words.length)];
         const status = `${word} @quincelikefruit just listened to K. ${w.id}: ${w.title}. She has listened to ${percentTotalListened}% of Mozart's total works.`;
         const twitterRes = await twitter.post('statuses/update', { status })
