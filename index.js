@@ -109,7 +109,7 @@ const checkNew = async (works) => {
         const percentTotalListened = await getPercentTotalListned(client);
         const words = ['Hark!', 'Rejoyce!', 'Alleluia!', 'Nice!', 'Pretty swish!', 'Terrific!', 'Absolutely!', 'So fetch!', 'Radical!', 'Wow-wee!', 'Good morning! Let\'s begin—', 'YOLO!', 'So...'];
         const word = words[Math.floor(Math.random() * words.length)];
-        const status = `${word} @quincelikefruit just listened to K. ${w.id}: ${w.title}. She has listened to ${percentTotalListened}% of Mozart's total works.`;
+        const status = `${word} @jadefromtwit just listened to K. ${w.id}: ${w.title}. She has listened to ${percentTotalListened}% of Mozart's total works.`;
         const twitterRes = await twitter.post('statuses/update', { status })
         console.log(`success! tweet string: ${twitterRes.text}`);
         return 1;
